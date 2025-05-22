@@ -1,5 +1,6 @@
 "use client";
 
+import { DeleteClientButton } from "@/components/delete-client-button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
@@ -109,6 +110,10 @@ export const columns: ColumnDef<Client>[] = [
               className="cursor-pointer"
             >
               Copy username
+            </DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem onSelect={(e) => e.preventDefault()}>
+              <DeleteClientButton id={client.id} />
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
