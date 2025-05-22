@@ -1,19 +1,17 @@
+"use client";
+
 import { Header } from "@/components/layout/header";
 import { DataTable } from "./clients/data-table";
 import { columns } from "./clients/columns";
+import { useClientsQuery } from "@/hooks/useClientsQuery";
 
-const fetchClients = async () => {
-  const res = await fetch(
-    "https://682f1866746f8ca4a47fd112.mockapi.io/clients"
-  );
+export default function Home() {
+  const { data, isLoading } = useClientsQuery();
 
-  const data = await res.json();
+  if (!data) return null;
 
-  return data;
-};
+  if (isLoading) return <div>Loading...</div>;
 
-export default async function Home() {
-  const data = await fetchClients();
   return (
     <>
       <Header />
